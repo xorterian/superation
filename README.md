@@ -51,3 +51,27 @@ $$ \circ exp( f(x) ) = \lim\limits_{h \to \infty} \( x + {f(x) \over h} \)^{\cir
 and
 $$ \circ log( f(x) ) = \lim\limits_{h \to \infty} h \times ( \sqrt[\circ h]{f(x)} - x) $$
 
+## Example
+
+Let's superate the function y(x) = 2x.
+
+$$ (2x \Phi 1)(x') = (2x)^{\circ x'} = \circ exp( x' \times \circ log( 2x ) ) $$
+
+$$ \circ log( 2x ) = \lim\limits_{h \to \infty} h \times ( \sqrt[\circ h]{2x} - x) = \lim\limits_{h \to \infty} h \times ( \sqrt[h]{2} x - x) = \lim\limits_{h \to \infty} x \times h \times ( \sqrt[h]{2} - 1) = x \times log(2) $$
+
+Because the _n_-th functional power of $ a \times x $ is $ a^n \times x $, furthermore its _n_-th functional root is $ \sqrt[n]{a} \times x $.
+Thus
+
+$$ (2x \Phi 1)(x') = \circ exp( x' \times x \times log(2) ) = \lim\limits_{h \to \infty} ( x + {{x' \times x \times log(2)} \over {h}} )^{\circ h} = $$
+
+$$ = \lim\limits_{h \to \infty} ( x \times ( 1 + {{x' \times log(2)} \over {h}} ) )^{\circ h} = x \times \lim\limits_{h \to \infty} ( 1 + {{x' \times log(2)} \over {h}} )^h =$$
+
+$$ = x \times e^{x' \times log(2)} = x \times 2^{x'} $$
+
+So the superation of 2x is $ (2x \Phi 1)(x) = 2^x $ as we expected.
+
+## Numerical approximation with Pari/gp
+
+The exp.gp programme is based on Carleman matrices instead of functional limits. We can make the Carleman matrix of any function for which coefficients of its Taylor series converge:
+
+$$ M[f(x)]_{j k} =  $$
