@@ -70,8 +70,18 @@ $$ = x \times e^{x' \times log(2)} = x \times 2^{x'} $$
 
 So the superation of 2x is $ (2x \Phi 1)(x) = 2^x $ as we expected.
 
-## Numerical approximation with Pari/gp
+## Matrix approximation
 
-The exp.gp programme is based on Carleman matrices instead of functional limits. We can make the Carleman matrix of any function for which coefficients of its Taylor series converge:
+We can make the Carleman matrix of any function for which coefficients of its Taylor series converge:
 
-$$ M[f(x)]_{j k} =  $$
+$$ M\[f(x)\]_{j k} = \frac{1}{k!} (D^j f^j)(0) $$
+
+where D stands for d/dx, derivative operator, and $ f^j $ is a multiplicative power and not a functional one as there is no circle behind of _j_
+
+The Carleman matrix of an f function actually includes the coefficients of Taylor series of the function in the first column. So it satisfies:
+
+$$ f(x) = \displaystyle\sum_{k = 0}^{\infty} M[f]_{1 k} \times x^k $$
+
+The most important rule is the so-called functional-linearity: (1) the matrix representation of functional product (composition) of functions are the matrix product of the matrix representation of the functions, (2) the matrix representation of functional power - even real and complex powers - of a function is the matrix power of matrix representation of the function. Once you have a $ X \times D \times X^{-1} $ decomposition of a representation, it is really easy to calculate the _n_-th power of the matrix comes with the _n_-th functional power of the function.
+
+$$ M[f^{\circ \alpha} \circ g^{\circ \beta}] = M[f]^{\alpha} \times M[g]^{\beta} $$
